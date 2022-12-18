@@ -19,7 +19,7 @@ export default function List() {
                 회원 목록
                 <Link className="btn btn-primary mx-2" to='/member/register'>Register</Link>
             </p>
-            <table className="table table-dark">
+            <table className="table table-dark table-striped">
                 <thead>
                     <tr>
                         <th>mno</th>

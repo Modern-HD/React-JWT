@@ -17,10 +17,11 @@ router.get("/api/member", (req: Request, res: Response, next: NextFunction) => {
 
 router.get("/api/member/:mno", (req: Request, res: Response, next: NextFunction) => {
     console.log("memer router > /member/mno > GET");
+    const { mno } = req.params;
     const query = "SELECT a.mno, a.email, a.pwd, a.nick_name, a.create_at, a.update_at FROM `member` a WHERE mno = ?";
-    mysql.query(query, (err: MysqlError, result: Member) => {
+    mysql.query(query, mno, (err: MysqlError | null, result: Member[]) => {
         if (err) return next(err);
-        return res.send(result);
+        return res.send(result[0]);
     })
 })
 
@@ -51,7 +52,7 @@ router.put("/api/member/:mno", (req: Request, res: Response, next: NextFunction)
     const query = "UPDATE `member` SET nick_name = ?, pwd = ? WHERE mno = ?";
     mysql.query(query, [body.nick_name, body.pwd, body.mno], (err: MysqlError | null, result: OkPacket) => {
         if (err) return next(err);
-        return res.send(`${result.insertId}`);
+        return res.send("1");
     })
 })
 

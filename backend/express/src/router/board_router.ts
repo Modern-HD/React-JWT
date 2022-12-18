@@ -18,6 +18,7 @@ router.get("/api/board", (req: Request, res: Response, next: NextFunction) => {
 router.get("/api/board/:bno", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > /board/bno > GET");
     const {bno} = req.params;
+    console.log(bno);
     const query = "SELECT * FROM board a WHERE a.bno = ?";
     mysql.query(query, bno, (err: MysqlError | null, result: Board[]) => {
         if (err) return next(err);

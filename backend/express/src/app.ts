@@ -19,7 +19,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);
-    res.status(500).send('Interval Server Erorr');
+    res.status(500).send('Internal Server Error');
 });
 
 app.listen(port, () => {

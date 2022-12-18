@@ -16,23 +16,7 @@ export default function Detail() {
     return (
         <div className="container mt-3">
             <h2>Board Detail</h2>
-            <p>게시판 내용
-                <Link to='/board' className="btn btn-primary mx-1">List</Link>
-                <Link to={'/board/modify/' + board?.bno} className="btn btn-outline-warning mx-1">Modify</Link>
-                <button className="btn btn-outline-danger" onClick={() => {
-                    axios.delete('/api/board/' + bno).then((result: AxiosResponse<string>) => {
-                        if (result.status === 200 && parseInt(result.data) > 0) {
-                            alert('삭제 성공');
-                            navigate("/board");
-                        } else {
-                            alert("삭제 실패");
-                        }
-                    }).catch((err: AxiosError) => {
-                        console.log(err);
-                        alert("삭제 실패");
-                    })
-                }}>Remove</button>
-            </p>
+            <p>게시판 내용</p>
             <table className="table table-hover">
                 <tbody>
                     <tr>
@@ -61,6 +45,21 @@ export default function Detail() {
                     </tr>
                 </tbody>
             </table>
+            <Link to='/board' className="btn btn-primary mx-1">List</Link>
+            <Link to={'/board/modify/' + board?.bno} className="btn btn-outline-warning mx-1">Modify</Link>
+            <button className="btn btn-outline-danger" onClick={() => {
+                axios.delete('/api/board/' + bno).then((result: AxiosResponse<string>) => {
+                    if (result.status === 200 && parseInt(result.data) > 0) {
+                        alert('삭제 성공');
+                        navigate("/board");
+                    } else {
+                        alert("삭제 실패");
+                    }
+                }).catch((err: AxiosError) => {
+                    console.log(err);
+                    alert("삭제 실패");
+                })
+            }}>Remove</button>
         </div>
     );
 }
