@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import NavMode from "../state/NavMode";
 import Detail from "./Detail";
 import List from "./List";
 import Login from "./Login";
@@ -6,6 +9,12 @@ import Modify from "./Modify";
 import Register from "./Register";
 
 export default function Member() {
+
+    const [, setNavMode] = useRecoilState(NavMode)
+    useEffect(() => {
+        setNavMode('member');
+    })
+
     return (
         <Routes>
             <Route path="/" element={<List/>}></Route>
