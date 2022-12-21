@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import NavMode from "../state/NavMode";
 import Detail from "./Detail";
 import List from "./List";
@@ -10,7 +10,7 @@ import Register from "./Register";
 
 export default function Member() {
 
-    const [, setNavMode] = useRecoilState(NavMode)
+    const setNavMode = useSetRecoilState(NavMode);
     useEffect(() => {
         setNavMode('member');
     })

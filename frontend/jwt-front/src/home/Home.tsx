@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import NavMode from "../state/NavMode";
 
 export default function Home() {
 
-    const [, setNavMode] = useRecoilState(NavMode);
+    const setNavMode = useSetRecoilState(NavMode);
     useEffect(() => {
         setNavMode('home');
     })

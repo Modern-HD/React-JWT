@@ -3,13 +3,13 @@ import Register from './Register';
 import Detail from './Detail';
 import List from './List';
 import Modify from './Modify';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import NavMode from '../state/NavMode';
 import { useEffect } from 'react';
 
 export default function Board() {
 
-    const [, setNavMode] = useRecoilState(NavMode);
+    const setNavMode = useSetRecoilState(NavMode);
     useEffect(() => {
         setNavMode('board');
     })
