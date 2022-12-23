@@ -21,5 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.env
+env.ts
 
 /backend/express/src/orm/db_config.ts
