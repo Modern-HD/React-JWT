@@ -6,6 +6,7 @@ import con from "../orm/db_connection";
 const router = Router();
 const mysql: Connection = con;
 
+// List
 router.get("/api/board", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > /board > GET");
     const query = "SELECT a.bno, a.title, a.writer, a.create_at, a.update_at FROM board a";
@@ -15,6 +16,7 @@ router.get("/api/board", (req: Request, res: Response, next: NextFunction) => {
     })
 })
 
+// Detail
 router.get("/api/board/:bno", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > /board/bno > GET");
     const {bno} = req.params;
@@ -26,6 +28,7 @@ router.get("/api/board/:bno", (req: Request, res: Response, next: NextFunction) 
     })
 })
 
+// Register
 router.post("/api/board/:mno", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > /board/mno > POST");
     const body: Board = req.body;
@@ -36,6 +39,7 @@ router.post("/api/board/:mno", (req: Request, res: Response, next: NextFunction)
     })
 })
 
+// Modify
 router.put("/api/board/:bno", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > board/bno > PUT");
     const body: Board = req.body;
@@ -46,6 +50,7 @@ router.put("/api/board/:bno", (req: Request, res: Response, next: NextFunction) 
     })
 })
 
+// Remove
 router.delete("/api/board/:bno", (req: Request, res: Response, next: NextFunction) => {
     console.log("board router > board/bno > DELETE");
     const {bno} = req.params;
